@@ -4,12 +4,17 @@ import Dashboard from "./views/Dashboard";
 import Candidates from "./views/Candidates";
 import CandidateDetail from "./views/CandidateDetail";
 import Roles from "./views/Roles";
+import Exceptions from "./views/Exceptions";
+import AuditPacks from "./views/AuditPacks";
+import { ToastProvider } from "./components/ToastContext";
 
 export type ViewState =
   | "dashboard"
   | "candidates"
   | "candidate-detail"
-  | "roles";
+  | "roles"
+  | "exceptions"
+  | "audit";
 
 export default function App() {
   const [currentView, setCurrentView] = useState<ViewState>("dashboard");
@@ -23,13 +28,17 @@ export default function App() {
   };
 
   return (
-    <Layout currentView={currentView} navigateTo={navigateTo}>
-      {currentView === "dashboard" && <Dashboard navigateTo={navigateTo} />}
-      {currentView === "candidates" && <Candidates navigateTo={navigateTo} />}
-      {currentView === "candidate-detail" && selectedCandidateId && (
-        <CandidateDetail id={selectedCandidateId} navigateTo={navigateTo} />
-      )}
-      {currentView === "roles" && <Roles />}
-    </Layout>
+    <ToastProvider>
+      <Layout currentView={currentView} navigateTo={navigateTo}>
+        {currentView === "dashboard" && <Dashboard navigateTo={navigateTo} />}
+        {currentView === "candidates" && <Candidates navigateTo={navigateTo} />}
+        {currentView === "candidate-detail" && selectedCandidateId && (
+          <CandidateDetail id={selectedCandidateId} navigateTo={navigateTo} />
+        )}
+        {currentView === "roles" && <Roles />}
+        {currentView === "exceptions" && <Exceptions />}
+        {currentView === "audit" && <AuditPacks />}
+      </Layout>
+    </ToastProvider>
   );
 }
