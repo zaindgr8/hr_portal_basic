@@ -30,7 +30,7 @@ export function ToastProvider({ children }: { children: ReactNode }) {
       {children}
       {toast && (
         <div className="fixed bottom-4 right-4 z-50 animate-in slide-in-from-bottom-5 fade-in duration-300">
-          <div className="bg-zinc-900 text-white px-4 py-3 rounded-xl shadow-lg text-[13px] font-medium flex items-center gap-3">
+          <div className="bg-[#0176D3] text-white px-4 py-3 rounded-xl shadow-lg text-[13px] font-medium flex items-center gap-3">
             <div className="w-2 h-2 rounded-full bg-emerald-400" />
             {toast.message}
           </div>
