@@ -7,6 +7,7 @@ import Roles from "./views/Roles";
 import Exceptions from "./views/Exceptions";
 import AuditPacks from "./views/AuditPacks";
 import Cessations from "./views/Cessations";
+import Settings from "./views/Settings";
 import { ToastProvider } from "./components/ToastContext";
 
 export type ViewState =
@@ -16,7 +17,8 @@ export type ViewState =
   | "roles"
   | "exceptions"
   | "audit"
-  | "cessations";
+  | "cessations"
+  | "settings";
 
 export default function App() {
   const [currentView, setCurrentView] = useState<ViewState>("dashboard");
@@ -41,6 +43,7 @@ export default function App() {
         {currentView === "exceptions" && <Exceptions />}
         {currentView === "audit" && <AuditPacks />}
         {currentView === "cessations" && <Cessations />}
+        {currentView === "settings" && <Settings />}
       </Layout>
     </ToastProvider>
   );

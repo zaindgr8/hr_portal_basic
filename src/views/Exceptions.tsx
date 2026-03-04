@@ -13,54 +13,54 @@ export default function Exceptions() {
     <div className="space-y-6 animate-in fade-in duration-500">
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
-          <h1 className="text-2xl font-semibold tracking-tight text-[#032D60]">Exceptions</h1>
-          <p className="text-[14px] text-[#444444] mt-1">Manage temporary approvals and blocked clearance overrides.</p>
+          <h1 className="text-2xl font-semibold tracking-tight text-slate-900">Exceptions</h1>
+          <p className="text-[14px] text-slate-500 mt-1">Manage temporary approvals and blocked clearance overrides.</p>
         </div>
-        <button className="bg-[#0176D3] text-white px-4 py-2 rounded-lg text-[13px] font-medium hover:bg-[#014486] transition-colors shadow-sm flex items-center gap-2">
+        <button className="bg-blue-600 text-white px-4 py-2 rounded-lg text-[13px] font-medium hover:bg-blue-700 transition-colors shadow-sm flex items-center gap-2">
           <Plus className="w-4 h-4" />
           Raise Exception
         </button>
       </div>
 
-      <div className="bg-white rounded-2xl border border-[#DDDBDA]/60 shadow-sm overflow-hidden">
-        <div className="p-4 border-b border-[#EAEAEA] flex flex-col sm:flex-row sm:items-center gap-4 justify-between">
+      <div className="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden">
+        <div className="p-4 border-b border-slate-100 flex flex-col sm:flex-row sm:items-center gap-4 justify-between">
           <div className="relative max-w-md w-full group">
-            <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-[#747474] group-focus-within:text-[#181818] transition-colors" />
+            <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400 group-focus-within:text-slate-700 transition-colors" />
             <input 
               type="text" 
               placeholder="Search exceptions by candidate or type..." 
-              className="w-full pl-9 pr-4 py-1.5 text-[13px] border border-[#DDDBDA]/80 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#0176D3]/5 focus:border-[#747474] transition-all"
+              className="w-full pl-9 pr-4 py-2 text-[13px] border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 transition-all bg-slate-50"
             />
           </div>
-          <button className="flex items-center gap-2 px-3 py-1.5 text-[13px] font-medium text-[#181818] bg-white border border-[#DDDBDA]/80 rounded-lg hover:bg-[#F4F6F9] transition-colors">
-            <Filter className="w-3.5 h-3.5" />
+          <button className="flex items-center gap-2 px-3 py-2 text-[13px] font-medium text-slate-600 bg-white border border-slate-200 rounded-lg hover:bg-slate-50 transition-colors">
+            <Filter className="w-4 h-4" />
             Filter
           </button>
         </div>
 
         <div className="overflow-x-auto">
           <table className="w-full text-left text-[13px]">
-            <thead className="bg-[#F4F6F9]/50 border-b border-[#EAEAEA] text-[#444444]">
+            <thead className="bg-slate-50/50 border-b border-slate-200 text-slate-500">
               <tr>
-                <th className="px-6 py-3 font-medium">Candidate & Role</th>
-                <th className="px-6 py-3 font-medium">Exception Type</th>
-                <th className="px-6 py-3 font-medium">Status</th>
-                <th className="px-6 py-3 font-medium">Expiry Date</th>
-                <th className="px-6 py-3 font-medium">Raised By</th>
-                <th className="px-6 py-3 font-medium text-right"></th>
+                <th className="px-6 py-3 font-semibold">Candidate & Role</th>
+                <th className="px-6 py-3 font-semibold">Exception Type</th>
+                <th className="px-6 py-3 font-semibold">Status</th>
+                <th className="px-6 py-3 font-semibold">Expiry Date</th>
+                <th className="px-6 py-3 font-semibold">Raised By</th>
+                <th className="px-6 py-3 font-semibold text-right"></th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-[#EAEAEA]">
+            <tbody className="divide-y divide-slate-100">
               {EXCEPTIONS.map((exc) => (
-                <tr key={exc.id} className="hover:bg-[#F4F6F9]/80 transition-colors group">
+                <tr key={exc.id} className="hover:bg-slate-50/50 transition-colors group">
                   <td className="px-6 py-4">
-                    <div className="font-medium text-[#032D60]">{exc.candidate}</div>
-                    <div className="text-[#444444] mt-0.5 text-[12px]">{exc.role}</div>
+                    <div className="font-medium text-slate-900">{exc.candidate}</div>
+                    <div className="text-slate-500 mt-0.5 text-[12px]">{exc.role}</div>
                   </td>
                   <td className="px-6 py-4">
                     <div className="flex items-center gap-2">
-                      <AlertCircle className="w-4 h-4 text-[#747474]" />
-                      <span className="text-[#181818]">{exc.type}</span>
+                      <AlertCircle className="w-4 h-4 text-slate-400" />
+                      <span className="text-slate-700">{exc.type}</span>
                     </div>
                   </td>
                   <td className="px-6 py-4">
@@ -78,13 +78,13 @@ export default function Exceptions() {
                     </div>
                   </td>
                   <td className="px-6 py-4">
-                    <span className={`text-[13px] ${exc.status === 'Expired' ? 'text-red-600 font-medium' : 'text-[#181818]'}`}>
+                    <span className={`text-[13px] ${exc.status === 'Expired' ? 'text-red-600 font-medium' : 'text-slate-700'}`}>
                       {exc.expiry}
                     </span>
                   </td>
-                  <td className="px-6 py-4 text-[#444444]">{exc.raisedBy}</td>
+                  <td className="px-6 py-4 text-slate-500">{exc.raisedBy}</td>
                   <td className="px-6 py-4 text-right">
-                    <button className="text-[#C9C9C9] hover:text-[#181818] p-1.5 rounded-md hover:bg-[#EAEAEA] transition-colors opacity-0 group-hover:opacity-100">
+                    <button className="text-slate-400 hover:text-slate-700 p-1.5 rounded-md hover:bg-slate-100 transition-colors opacity-0 group-hover:opacity-100">
                       <MoreHorizontal className="w-4 h-4" />
                     </button>
                   </td>

@@ -18,76 +18,76 @@ export default function Candidates({ navigateTo }: { navigateTo: (v: ViewState, 
     <div className="space-y-6 animate-in fade-in duration-500">
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
-          <h1 className="text-2xl font-semibold tracking-tight text-[#032D60]">Candidates & Staff</h1>
-          <p className="text-[14px] text-[#444444] mt-1">Manage clearance workflows for all regulated individuals.</p>
+          <h1 className="text-2xl font-semibold tracking-tight text-slate-900">Candidates & Staff</h1>
+          <p className="text-[14px] text-slate-500 mt-1">Manage clearance workflows for all regulated individuals.</p>
         </div>
         <button 
           onClick={() => showToast('Add Candidate modal opened')}
-          className="bg-[#0176D3] text-white px-4 py-2 rounded-lg text-[13px] font-medium hover:bg-[#014486] transition-colors shadow-sm"
+          className="bg-blue-600 text-white px-4 py-2 rounded-lg text-[13px] font-medium hover:bg-blue-700 transition-colors shadow-sm"
         >
           Add Candidate
         </button>
       </div>
 
-      <div className="bg-white rounded-2xl border border-[#DDDBDA]/60 shadow-sm overflow-hidden">
-        <div className="p-4 border-b border-[#EAEAEA] flex flex-col sm:flex-row sm:items-center gap-4 justify-between">
+      <div className="bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden">
+        <div className="p-4 border-b border-slate-200 flex flex-col sm:flex-row sm:items-center gap-4 justify-between">
           <div className="relative max-w-md w-full group">
-            <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-[#747474] group-focus-within:text-[#181818] transition-colors" />
+            <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400 group-focus-within:text-slate-700 transition-colors" />
             <input 
               type="text" 
               placeholder="Search by name or role..." 
-              className="w-full pl-9 pr-4 py-1.5 text-[13px] border border-[#DDDBDA]/80 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#0176D3]/5 focus:border-[#747474] transition-all"
+              className="w-full pl-9 pr-4 py-2 text-[13px] border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 transition-all bg-slate-50"
             />
           </div>
           <button 
             onClick={() => showToast('Filter options opened')}
-            className="flex items-center gap-2 px-3 py-1.5 text-[13px] font-medium text-[#181818] bg-white border border-[#DDDBDA]/80 rounded-lg hover:bg-[#F4F6F9] transition-colors"
+            className="flex items-center gap-2 px-3 py-2 text-[13px] font-medium text-slate-600 bg-white border border-slate-200 rounded-lg hover:bg-slate-50 transition-colors"
           >
-            <Filter className="w-3.5 h-3.5" />
+            <Filter className="w-4 h-4" />
             Filter
           </button>
         </div>
 
         <div className="overflow-x-auto">
           <table className="w-full text-left text-[13px]">
-            <thead className="bg-[#F4F6F9]/50 border-b border-[#EAEAEA] text-[#444444]">
+            <thead className="bg-slate-50/50 border-b border-slate-200 text-slate-500">
               <tr>
-                <th className="px-6 py-3 font-medium">Name & Role</th>
-                <th className="px-6 py-3 font-medium">Classification</th>
-                <th className="px-6 py-3 font-medium">Start Date</th>
-                <th className="px-6 py-3 font-medium">Status</th>
-                <th className="px-6 py-3 font-medium">Progress</th>
-                <th className="px-6 py-3 font-medium text-right"></th>
+                <th className="px-6 py-3 font-semibold">Name & Role</th>
+                <th className="px-6 py-3 font-semibold">Classification</th>
+                <th className="px-6 py-3 font-semibold">Start Date</th>
+                <th className="px-6 py-3 font-semibold">Status</th>
+                <th className="px-6 py-3 font-semibold">Progress</th>
+                <th className="px-6 py-3 font-semibold text-right"></th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-[#EAEAEA]">
+            <tbody className="divide-y divide-slate-100">
               {CANDIDATES.map((candidate) => (
                 <tr 
                   key={candidate.id} 
-                  className="hover:bg-[#F4F6F9]/80 transition-colors cursor-pointer group"
+                  className="hover:bg-slate-50/50 transition-colors cursor-pointer group"
                   onClick={() => navigateTo('candidate-detail', candidate.id)}
                 >
                   <td className="px-6 py-4">
-                    <div className="font-medium text-[#032D60]">{candidate.name}</div>
-                    <div className="text-[#444444] mt-0.5 text-[12px]">{candidate.role}</div>
+                    <div className="font-medium text-slate-900">{candidate.name}</div>
+                    <div className="text-slate-500 mt-0.5 text-[12px]">{candidate.role}</div>
                   </td>
                   <td className="px-6 py-4">
-                    <span className="inline-flex items-center px-2 py-0.5 rounded-md text-[11px] font-medium border border-[#DDDBDA] bg-[#F4F6F9] text-[#181818]">
+                    <span className="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-medium border border-slate-200 bg-slate-50 text-slate-700">
                       {candidate.type}
                     </span>
                   </td>
-                  <td className="px-6 py-4 text-[#444444]">{candidate.date}</td>
+                  <td className="px-6 py-4 text-slate-600">{candidate.date}</td>
                   <td className="px-6 py-4">
                     <div className="flex items-center gap-1.5">
                       {candidate.status === 'Cleared' && <CheckCircle2 className="w-4 h-4 text-emerald-500" />}
                       {candidate.status === 'Blocked' && <XCircle className="w-4 h-4 text-red-500" />}
                       {candidate.status === 'Re-Clearance Required' && <AlertTriangle className="w-4 h-4 text-amber-500" />}
-                      {(candidate.status === 'Intake in Progress' || candidate.status === 'Evidence Collection') && <Clock className="w-4 h-4 text-[#747474]" />}
+                      {(candidate.status === 'Intake in Progress' || candidate.status === 'Evidence Collection') && <Clock className="w-4 h-4 text-slate-400" />}
                       <span className={`font-medium text-[12px] ${
                         candidate.status === 'Cleared' ? 'text-emerald-700' :
                         candidate.status === 'Blocked' ? 'text-red-700' :
                         candidate.status === 'Re-Clearance Required' ? 'text-amber-700' :
-                        'text-[#181818]'
+                        'text-slate-700'
                       }`}>
                         {candidate.status}
                       </span>
@@ -95,24 +95,24 @@ export default function Candidates({ navigateTo }: { navigateTo: (v: ViewState, 
                   </td>
                   <td className="px-6 py-4">
                     <div className="flex items-center gap-3">
-                      <div className="w-full bg-[#EAEAEA] rounded-full h-1.5 max-w-[80px] overflow-hidden">
+                      <div className="w-full bg-slate-100 rounded-full h-1.5 max-w-[80px] overflow-hidden">
                         <div 
                           className={`h-full rounded-full ${
                             candidate.progress === 100 ? 'bg-emerald-500' : 
                             candidate.status === 'Blocked' ? 'bg-red-500' : 
                             candidate.status === 'Re-Clearance Required' ? 'bg-amber-500' :
-                            'bg-[#0176D3]'
+                            'bg-blue-600'
                           }`} 
                           style={{ width: `${candidate.progress}%` }}
                         />
                       </div>
-                      <span className="text-[11px] text-[#444444] font-medium w-6">{candidate.progress}%</span>
+                      <span className="text-[11px] text-slate-500 font-medium w-6">{candidate.progress}%</span>
                     </div>
                   </td>
                   <td className="px-6 py-4 text-right">
                     <button 
                       onClick={(e) => { e.stopPropagation(); showToast('Candidate actions opened'); }}
-                      className="text-[#C9C9C9] hover:text-[#181818] p-1.5 rounded-md hover:bg-[#EAEAEA] transition-colors opacity-0 group-hover:opacity-100"
+                      className="text-slate-400 hover:text-slate-700 p-1.5 rounded-md hover:bg-slate-100 transition-colors opacity-0 group-hover:opacity-100"
                     >
                       <MoreHorizontal className="w-4 h-4" />
                     </button>
