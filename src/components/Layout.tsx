@@ -42,7 +42,7 @@ export default function Layout({ children, currentView, navigateTo }: LayoutProp
             <div className="w-7 h-7 bg-blue-600 rounded-lg flex items-center justify-center">
               <Shield className="w-4 h-4 text-white" />
             </div>
-            <span className="text-[15px] font-semibold tracking-tight text-white">ReguGuard</span>
+            <span className="text-[15px] font-semibold tracking-tight text-white">Audit Clean</span>
           </div>
         </div>
         
